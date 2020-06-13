@@ -1,0 +1,15 @@
+  alias: 000 Ring på døren
+  description: ''
+  trigger:
+  - device_id: 460851d4d70b4639ae5fbeee6393ad0d
+    domain: deconz
+    platform: device
+    subtype: turn_on
+    type: remote_button_short_press
+  condition: []
+  action:
+  - entity_id: script.sonosdoorbell
+    service: script.toggle
+  - data:
+      message: Det ringer på hoveddøren
+    service: notify.mobile_app_jop_iphone_x
