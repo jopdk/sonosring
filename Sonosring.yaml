@@ -1,0 +1,22 @@
+sonosdoorbell:
+  alias: sonosring
+  sequence:
+  - data:
+      entity_id: media_player.kokken
+    service: sonos.snapshot
+  - data:
+      entity_id: media_player.kokken
+    service: sonos.unjoin
+  - data:
+      entity_id: media_player.kokken
+      volume_level: 0.3
+    service: media_player.volume_set
+  - data_template:
+      entity_id: media_player.kokken
+      media_content_id: https://<yourdomainname>/local/<name of file to flay>.wav
+      media_content_type: music
+    service: media_player.play_media
+  - delay: '9'
+  - data:
+      entity_id: media_player.kokken
+    service: sonos.restore
